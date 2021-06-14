@@ -46,6 +46,7 @@ def handle_cars():
         cars = CarsModel.query.all()
         results = [
             {
+                "id": car.id,
                 "name": car.name,
                 "model": car.model,
                 "doors": car.doors
