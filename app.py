@@ -55,6 +55,17 @@ def handle_cars():
 
         return {"count": len(results), "cars": results}
 
+@app.route('/cars/<car_id>', methods = ['GET'])
+def handle_car(car_id):
+    car = CarsModel.query.get_or_404(car_id)
+
+    if request.method == 'GET':
+        response = {
+            "name": car.name,
+            "model": car.model,
+            "doors": car.doors
+        }
+        return {"message": "success", "car": response}
 
 if __name__ == '__main__':
     app.run(debug=True)
